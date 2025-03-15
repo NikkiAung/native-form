@@ -1,8 +1,8 @@
 import React from 'react'
-import { View,Text, StyleSheet, Pressable } from 'react-native'
-import { Link } from 'expo-router'
+import { View, StyleSheet } from 'react-native'
 import { router } from "expo-router";
 import CustomButton from '../../components/custom-button';
+import CustomInput from '../../components/custom-input';
 
 const Personal = () => {
     const onNext = () => {
@@ -10,7 +10,13 @@ const Personal = () => {
     }
   return (
     <View style={styles.container}>
-      <Text>Personal</Text>
+      <CustomInput label={'Fullname'} />
+      <CustomInput label={'Address'} />
+      <View style={{flexDirection : "row", gap: 5}}>
+        <CustomInput label={'City'} style={{flex:1}}/>
+        <CustomInput label={'Postal Code'} style={{flex:1}}/>
+      </View>
+      <CustomInput label={'Phone number'} inputMode="tel"/>
       <CustomButton title={'Go to payout'} onPress={onNext} style={styles.button}/>
     </View>
   )
