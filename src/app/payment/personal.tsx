@@ -2,6 +2,7 @@ import React from 'react'
 import { View,Text, StyleSheet, Pressable } from 'react-native'
 import { Link } from 'expo-router'
 import { router } from "expo-router";
+import CustomButton from '../../components/custom-button';
 
 const Personal = () => {
     const onNext = () => {
@@ -10,9 +11,7 @@ const Personal = () => {
   return (
     <View style={styles.container}>
       <Text>Personal</Text>
-        <Pressable style={styles.button} onPress={onNext}>
-            <Text style={styles.text}>Go to Payout</Text>
-        </Pressable>
+      <CustomButton title={'Go to payout'} onPress={onNext} style={styles.button}/>
     </View>
   )
 }

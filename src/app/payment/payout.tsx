@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
-import { Link } from 'expo-router';
+import CustomButton from '../../components/custom-button';
 
 const PayoutScreen = () => {
     const onNext = () => {
@@ -10,9 +10,7 @@ const PayoutScreen = () => {
   return (
     <View style={styles.container}>
       <Text>PayoutScreen</Text>
-      <Pressable style={styles.button} onPress={onNext}>
-            <Text style={styles.text}>Go to Summary</Text>
-       </Pressable>
+      <CustomButton title={'Go to summary'} onPress={onNext} style={styles.button}/>
     </View>
   )
 }
@@ -32,9 +30,5 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       marginTop: "auto",
       marginBottom: 20,
-    },
-    text: {
-      color: "#fff",
-      fontWeight: 600,
-    },
+    }
 });
