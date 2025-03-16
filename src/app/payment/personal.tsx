@@ -4,12 +4,21 @@ import { router } from "expo-router";
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import { useForm, SubmitHandler, Controller, FormProvider } from 'react-hook-form';
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { PersonalSchema } from "../../types/personal-schema";
 
-const Personal = () => {
+type Personal = z.infer<typeof PersonalSchema>;
+
+const PersonalScreen = () => {
     // const {handleSubmit, formState: {errors}, control} = useForm();
-    const form = useForm();
+    const form = useForm<Personal>({
+        resolver: zodResolver(PersonalSchema),
+    });
+
     console.log("Form Error",form.formState.errors);
-    const onNext:SubmitHandler<any> = (data) => {
+    
+    const onNext:SubmitHandler<Personal> = (data) => {
         console.log("Data",data);
         router.push("/payment/payout");
     } 
@@ -35,7 +44,7 @@ const Personal = () => {
   )
 }
 
-export default Personal
+export default PersonalScreen
 
 const styles = StyleSheet.create({
     container: {
