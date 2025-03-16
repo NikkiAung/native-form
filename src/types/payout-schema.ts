@@ -12,3 +12,5 @@ export const PayoutSchema = z.object({
         .min(100, { message: "CVV is required" })
         .max(999, { message: "Enter vaild CVV" }),
 });
+
+export type Payout = z.infer<typeof PayoutSchema>;

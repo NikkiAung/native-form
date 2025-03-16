@@ -17,3 +17,5 @@ export const PersonalSchema = z.object({
         .number({ message: "Please enter a valid phone number" })
         .min(1, { message: "Phone number is required" }),
 });
+
+export type Personal = z.infer<typeof PersonalSchema>;

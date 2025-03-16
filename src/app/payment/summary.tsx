@@ -1,8 +1,11 @@
 import React from 'react'
 import { View,Text, StyleSheet, Pressable } from 'react-native'
 import { Link, router } from 'expo-router'
+import { useSummary } from '../../contexts/SummaryProvider'
 
 const SummaryScreen = () => {
+    const {personalInfo, payoutInfo} = useSummary();
+    console.log("Summary Screen ", personalInfo,payoutInfo)
     const onNext = () => {
         router.dismissAll();
         router.back();

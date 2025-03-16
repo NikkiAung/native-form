@@ -4,22 +4,23 @@ import { router } from "expo-router";
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import { useForm, SubmitHandler, Controller, FormProvider } from 'react-hook-form';
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PersonalSchema } from "../../types/personal-schema";
-
-type Personal = z.infer<typeof PersonalSchema>;
+import { Personal } from '../../types/personal-schema';
+import { useSummary } from '../../contexts/SummaryProvider';
 
 const PersonalScreen = () => {
     // const {handleSubmit, formState: {errors}, control} = useForm();
+    const {setPersonalInfo} = useSummary();
     const form = useForm<Personal>({
         resolver: zodResolver(PersonalSchema),
     });
 
-    console.log("Form Error",form.formState.errors);
+    // console.log("Form Error",form.formState.errors);
     
     const onNext:SubmitHandler<Personal> = (data) => {
-        console.log("Data",data);
+        // console.log("Data",data);
+        setPersonalInfo(data);
         router.push("/payment/payout");
     } 
   return (

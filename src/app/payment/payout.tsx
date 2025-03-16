@@ -6,15 +6,16 @@ import CustomInput from '../../components/custom-input';
 import { useForm, SubmitHandler, Controller, FormProvider } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PayoutSchema } from "../../types/payout-schema";
-import * as z from "zod";
-
-type Payout = z.infer<typeof PayoutSchema>;
+import { Payout } from '../../types/payout-schema';
+import { useSummary } from '../../contexts/SummaryProvider';
 
 const PayoutScreen = () => {
+  const {setPayoutInfo} = useSummary();
   const form = useForm<Payout>({
     resolver: zodResolver(PayoutSchema),
   })
-  const onNext: SubmitHandler<Payout> = () => {
+  const onNext: SubmitHandler<Payout> = (data) => {
+      setPayoutInfo(data);
       router.push("/payment/summary");
   };
   return (
@@ -23,7 +24,7 @@ const PayoutScreen = () => {
         <CustomInput label={'Card number'} name="cardnumber" inputMode="numeric"/>
         <View style={{flexDirection : "row" , gap : 5}}>
           <CustomInput label={'Expiry date'} name="expiry" style={{flex:1}} inputMode="numeric"/>
-          <CustomInput label={'CVV'} name="cvv" inputMode="numeric"/>
+          <CustomInput label={'CVV'} name="cvv" style={{flex:1}} inputMode="numeric"/>
         </View>
         <CustomButton title={'Go to summary'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
       </FormProvider>
