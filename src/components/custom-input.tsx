@@ -1,18 +1,27 @@
 import React from 'react'
+import { useController } from 'react-hook-form';
 import { StyleProp, Text, View, TextInput, StyleSheet, ViewStyle, TextInputProps } from 'react-native'
 
 type CustomInputProp = {
     label : string;
-    style? : StyleProp<ViewStyle>
+    style? : StyleProp<ViewStyle>;
+    name : string;
 } & TextInputProps
 
-const CustomInput = ({label, style, ...textInputProps} : CustomInputProp) => {
-  const error = {message : undefined}
+const CustomInput = ({label, style, name, ...textInputProps} : CustomInputProp) => {
+  const {field : {value,onChange, onBlur}, fieldState: {error}} = useController({name, rules : {required : `${label} is required`}})
+  // const error = {message : undefined}
   return (
     <View style={style}>
       {label && <Text>{label}</Text>}
-      <TextInput style={[styles.input, error.message && styles.errorInput]} {...textInputProps}></TextInput>
-      <Text style={styles.error}>{error.message}</Text>
+      <TextInput 
+      style={[styles.input, error?.message && styles.errorInput]} 
+      {...textInputProps}
+      value={value}
+      onBlur={onBlur}
+      onChangeText={onChange}
+      />
+      <Text style={styles.error}>{error?.message}</Text>
     </View>
   )
 }
