@@ -2,6 +2,7 @@ import React from 'react'
 import { View,Text, StyleSheet, Pressable } from 'react-native'
 import { Link, router } from 'expo-router'
 import { useSummary } from '../../contexts/SummaryProvider'
+import CustomButton from '../../components/custom-button'
 
 const SummaryScreen = () => {
     const {personalInfo, payoutInfo} = useSummary();
@@ -42,9 +43,11 @@ const SummaryScreen = () => {
           </View>
         )
       }
-      <Pressable style={styles.button} onPress={onNext}>
-            <Text style={styles.text}>Go back home</Text>
-       </Pressable>
+      <CustomButton
+         title="Place order"
+         onPress={onNext}
+         style={styles.button}
+       />
     </View>
   )
 }
