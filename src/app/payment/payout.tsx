@@ -10,9 +10,10 @@ import { Payout } from '../../types/payout-schema';
 import { useSummary } from '../../contexts/SummaryProvider';
 
 const PayoutScreen = () => {
-  const {setPayoutInfo} = useSummary();
+  const {setPayoutInfo, payoutInfo} = useSummary();
   const form = useForm<Payout>({
     resolver: zodResolver(PayoutSchema),
+    defaultValues : payoutInfo,
   })
   const onNext: SubmitHandler<Payout> = (data) => {
       setPayoutInfo(data);

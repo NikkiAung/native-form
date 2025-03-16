@@ -11,9 +11,10 @@ import { useSummary } from '../../contexts/SummaryProvider';
 
 const PersonalScreen = () => {
     // const {handleSubmit, formState: {errors}, control} = useForm();
-    const {setPersonalInfo} = useSummary();
+    const {setPersonalInfo,personalInfo} = useSummary();
     const form = useForm<Personal>({
         resolver: zodResolver(PersonalSchema),
+        defaultValues : personalInfo,
     });
 
     // console.log("Form Error",form.formState.errors);
