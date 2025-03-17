@@ -27,7 +27,7 @@ const PayoutScreen = () => {
           <CustomInput label={'Expiry date'} name="expiry" style={{flex:1}} inputMode="numeric"/>
           <CustomInput label={'CVV'} name="cvv" style={{flex:1}} inputMode="numeric"/>
         </View>
-        <CustomButton title={'Go to summary'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
+        <CustomButton title={'Go to order'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
       </FormProvider>
     </View>
   )

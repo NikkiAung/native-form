@@ -13,6 +13,7 @@ export const PersonalSchema = z.object({
     postalcode: z
         .string({ required_error: "Postal code is required" })
         .min(1, { message: "Postal code is required" }),
+    country: z.string({ required_error: "Country is required" }),
     phonenumber: z
         .string({ required_error: "Please enter a vaild phone number" })
         .length(10, { message: "Phone number is required" }),

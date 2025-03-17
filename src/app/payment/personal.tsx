@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PersonalSchema } from "../../types/personal-schema";
 import { Personal } from '../../types/personal-schema';
 import { useSummary } from '../../contexts/SummaryProvider';
+import CustomPicker from "../../components/custom-picker";
+import RNPickerSelect from 'react-native-picker-select';
 
 const PersonalScreen = () => {
     // const {handleSubmit, formState: {errors}, control} = useForm();
@@ -39,6 +41,17 @@ const PersonalScreen = () => {
             <CustomInput label={'City'} style={{flex:1}} name="city"/>
             <CustomInput label={'Postal Code'} style={{flex:1}} name="postalcode"/>
         </View>
+        <CustomPicker
+           label="Country"
+           name="country"
+           items={[
+             { label: "Myanmar", value: "myanmar" },
+             { label: "Thailand", value: "thailand" },
+             { label: "China", value: "china" },
+             { label: "India", value: "india" },
+             { label: "Indonesia", value: "indonesia" },
+           ]}
+         />
         <CustomInput label={'Phone number'} inputMode="tel" name="phonenumber"/>
         <CustomButton title={'Go to payout'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
       </FormProvider>
