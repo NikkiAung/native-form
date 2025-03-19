@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PayoutSchema } from "../../types/payout-schema";
 import { Payout } from '../../types/payout-schema';
 import { useSummary } from '../../contexts/SummaryProvider';
+import CustomCheckbox from '../../components/custom-check';
 
 const PayoutScreen = () => {
   const {setPayoutInfo, payoutInfo} = useSummary();
@@ -16,6 +17,7 @@ const PayoutScreen = () => {
     defaultValues : payoutInfo,
   })
   const onNext: SubmitHandler<Payout> = (data) => {
+      console.log(data);
       setPayoutInfo(data);
       router.push("/payment/summary");
   };
@@ -27,6 +29,7 @@ const PayoutScreen = () => {
           <CustomInput label={'Expiry date'} name="expiry" style={{flex:1}} inputMode="numeric"/>
           <CustomInput label={'CVV'} name="cvv" style={{flex:1}} inputMode="numeric"/>
         </View>
+        <CustomCheckbox name="savecard" label="Save this payment information" />
         <CustomButton title={'Go to order'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
       </FormProvider>
     </View>

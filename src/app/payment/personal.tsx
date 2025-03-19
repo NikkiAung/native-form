@@ -41,7 +41,7 @@ const PersonalScreen = () => {
             <CustomInput label={'City'} style={{flex:1}} name="city"/>
             <CustomInput label={'Postal Code'} style={{flex:1}} name="postalcode"/>
         </View>
-        <CustomPicker
+        {/* <CustomPicker
            label="Country"
            name="country"
            items={[
@@ -51,7 +51,7 @@ const PersonalScreen = () => {
              { label: "India", value: "india" },
              { label: "Indonesia", value: "indonesia" },
            ]}
-         />
+         /> */}
         <CustomInput label={'Phone number'} inputMode="tel" name="phonenumber"/>
         <CustomButton title={'Go to payout'} onPress={form.handleSubmit(onNext)} style={styles.button}/>
       </FormProvider>
