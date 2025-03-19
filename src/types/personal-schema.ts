@@ -17,7 +17,6 @@ export const PersonalSchema = z.object({
     phonenumber: z
         .string({ required_error: "Please enter a vaild phone number" })
         .length(10, { message: "Phone number is required" }),
-    savecard: z.boolean().optional(),
 });
 
 export type Personal = z.infer<typeof PersonalSchema>;
