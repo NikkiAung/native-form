@@ -10,6 +10,7 @@ import { Personal } from '../../types/personal-schema';
 import { useSummary } from '../../contexts/SummaryProvider';
 import CustomPicker from "../../components/custom-picker";
 import RNPickerSelect from 'react-native-picker-select';
+import CustomDateTimePicker from '../../components/custom-datetime-picker';
 
 const PersonalScreen = () => {
     // const {handleSubmit, formState: {errors}, control} = useForm();
@@ -36,6 +37,7 @@ const PersonalScreen = () => {
       /> */}
       <FormProvider {...form}>
         <CustomInput label={'Fullname'} name="fullname"/>
+        <CustomDateTimePicker label="Date of birth" name="dateOfBirth"/>
         <CustomInput label={'Address'} name="address"/>
         <View style={{flexDirection : "row", gap: 5}}>
             <CustomInput label={'City'} style={{flex:1}} name="city"/>
